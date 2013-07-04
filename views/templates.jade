@@ -146,7 +146,14 @@ script(id="chat", type="text/html")
       #user-bar.bar
         .titlebar
           span(class='window_title') User List
-      #user-list.bar(ng-style="{'background-color': 'red'}")
+      #user-list.bar
+        .userlist_user(ng-repeat="user in users")
+          div(class="userlist_user_activity")
+            img(ng-src="/assets/images/{{user.user_status}}.png")
+            span(ng-class="userlist_user_{{user.user_stats}}")
+          div(class="userlist_user_info")
+            div(class="userlist_user_name") {{user.role}}{{user.nick}}
+              span(class="userlist_user_time") {{user.activity}}
     #user-window-toggle
       img(src="/assets/images/register.svg")
 
@@ -166,14 +173,6 @@ script(id="user_box", type="text/html")
     .close-button ×
     i(class="icon-asterisk icon-white spacing-right")
     {{server}}
-
-script(id="userlist_user", type="text/html")
-  div(class="userlist_user_activity")
-    img(src="/assets/images/{{user_status}}.png")
-    span(class="userlist_user_{{user_stats}}")
-  div(class="userlist_user_info")
-    div(class="userlist_user_name") {{role}}{{nick}}
-      span(class="userlist_user_time") {{activity}}
 
 script(id="link", type="text/html")
   a(target="_blank", href="{{link}}") {{link}}
