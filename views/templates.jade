@@ -146,7 +146,7 @@ script(id="chat", type="text/html")
       #user-bar.bar
         .titlebar
           span(class='window_title') User List
-      #user-list.bar
+      #user-list.bar(ng-controller="UserList")
         input.searchbox(ng-model="user_search")
         .userlist_user(ng-repeat="user in users | filter:user_search",ng-animate="{enter: 'animated lightSpeedIn', leave: 'animated fadeOutRight'}")
           div(class="userlist_user_activity")

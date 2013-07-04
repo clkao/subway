@@ -41,7 +41,7 @@ var UserListView = Backbone.View.extend({
   initialize: function() {
     this._element = this.collection.channel.view.$('#user-list');
     this.setElement(this._element);
-    angular.bootstrap(this._element);
+    angular.bootstrap(this._element, ['subway']);
     this.collection.bind('add', this.add, this);
   },
 
@@ -51,9 +51,12 @@ var UserListView = Backbone.View.extend({
 
   add: function(User) {
     $scope = angular.element(this._element).scope();
-    if (!$scope.users)
-      $scope.users = [];
     $scope.users.push(User.attributes);
     $scope.$digest();
   }
+});
+
+angular.module('subway', [])
+.controller('UserList', function($scope) {
+    $scope.users = []
 });
