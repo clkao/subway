@@ -4,6 +4,7 @@ var ChatView = Backbone.View.extend({
     // when we switch tabs
     this.setElement(ich.templates.chat);
     var name = this.model.get('name');
+    angular.bootstrap(this.$el, ['subway']);
     /*
     if(name[0] === '#' || name === 'status'){
       this.render();
