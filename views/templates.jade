@@ -147,7 +147,8 @@ script(id="chat", type="text/html")
         .titlebar
           span(class='window_title') User List
       #user-list.bar
-        .userlist_user(ng-repeat="user in users")
+        input.searchbox(ng-model="user_search")
+        .userlist_user(ng-repeat="user in users | filter:user_search")
           div(class="userlist_user_activity")
             img(ng-src="/assets/images/{{user.user_status}}.png")
             span(ng-class="userlist_user_{{user.user_stats}}")
